@@ -1,0 +1,17 @@
+<div class="card" *ngIf="cv() as item; else notFound">
+  <img class="avatar" [src]="item.photo" [alt]="item.name" />
+  <div class="info">
+    <h2>{{ item.name }}</h2>
+    <p>Métier: <strong>{{ item.job }}</strong></p>
+    <p>Âge: <strong>{{ item.age }}</strong></p>
+    <div class="actions">
+      <button class="danger" (click)="deleteCv()">Supprimer</button>
+      <a routerLink="/cvs" class="link">Retour à la liste</a>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <p>CV introuvable.</p>
+  <a routerLink="/cvs" class="link">Retour</a>
+</ng-template>

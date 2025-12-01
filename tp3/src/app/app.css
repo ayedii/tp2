@@ -1,0 +1,24 @@
+
+.main {
+  display: none;
+}
+
+:host {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: min(920px, 100%);
+  padding: 16px;
+}
+
+@media (min-width: 800px) {
+  .home-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

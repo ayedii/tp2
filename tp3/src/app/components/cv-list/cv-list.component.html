@@ -1,0 +1,14 @@
+<div>
+  <h2>Liste des CVs</h2>
+  <ul>
+    @for (c of cvs(); track c.id) {
+      <li>
+        <a [routerLink]="['/cvs', c.id]" class="item-link">
+          <img [src]="c.photo" [alt]="c.name" />
+          <strong>{{ c.name }}</strong>
+        </a>
+        <button (click)="embaucher(c.id)">Embaucher</button>
+      </li>
+    }
+  </ul>
+</div>
