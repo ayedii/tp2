@@ -14,7 +14,6 @@ export class CvService {
 
   private readonly _cvs = signal<Cv[]>(this.fakeCvs);
 
-  // TODO: Adjust to the correct endpoint from Swagger Explorer when known
   private readonly apiUrl = 'https://apilb.tridevs.net/api/personnes';
 
   constructor(private readonly http: HttpClient, private readonly toastr: ToastrService) {

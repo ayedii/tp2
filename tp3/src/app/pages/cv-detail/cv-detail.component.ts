@@ -1,13 +1,12 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
 import { CvService } from '../../services/cv.service';
 import { Cv } from '../../models/cv.model';
 
 @Component({
   selector: 'app-cv-detail',
   standalone: true,
-  imports: [NgIf, RouterLink],
+  imports: [RouterLink],
   templateUrl: './cv-detail.component.html',
   styleUrl: './cv-detail.component.css'
 })

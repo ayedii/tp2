@@ -13,7 +13,6 @@ export class EmbaucheService {
     return this._hired.asReadonly();
   }
 
-  // Observable view of the hired signal to demonstrate RxJS subscription
   readonly hired$: Observable<Cv[]> = toObservable(this._hired);
 
   embaucher(cv: Cv) {

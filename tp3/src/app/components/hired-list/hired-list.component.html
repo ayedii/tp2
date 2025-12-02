@@ -1,10 +1,18 @@
 <div>
   <h2>Embauchés</h2>
-  <div *ngIf="list.length === 0">Aucune personne embauchée.</div>
-  <ul *ngIf="list.length > 0">
-    <li *ngFor="let c of list">
-      <img [src]="c.photo" [alt]="c.name" />
-      <strong>{{ c.name }}</strong>
-    </li>
-  </ul>
+
+  @if (list().length === 0) {
+    <div>Aucune personne embauchée.</div>
+  }
+
+  @if (list().length > 0) {
+    <ul>
+      @for (c of list(); track c.id) {
+        <li>
+          <img [src]="c.photo" [alt]="c.name" />
+          <strong>{{ c.name }}</strong>
+        </li>
+      }
+    </ul>
+  }
 </div>

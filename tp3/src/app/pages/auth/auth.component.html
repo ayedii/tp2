@@ -2,28 +2,52 @@
   <h2>Authentification</h2>
 
   <form (ngSubmit)="submit()" novalidate>
-    <div class="error" *ngIf="showFormError() && form.invalid" aria-live="polite">
-      Le formulaire contient des erreurs. Veuillez corriger les champs en rouge.
-    </div>
 
     <div class="field">
       <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email"
-             [class.invalid]="(form.controls.email.touched || form.controls.email.dirty) && form.controls.email.invalid" />
-      <small class="error" *ngIf="(form.controls.email.touched || form.controls.email.dirty) && form.controls.email.errors as e" aria-live="polite">
-        <span *ngIf="e['required']">Email obligatoire.</span>
-        <span *ngIf="e['email']">Format d'email invalide.</span>
-      </small>
+
+      <input id="email"
+             type="email"
+             formControlName="email"
+             [class.invalid]="(form.controls.email.touched || form.controls.email.dirty) 
+                               && form.controls.email.invalid" />
+
+      @if ((form.controls.email.touched || form.controls.email.dirty) 
+           && form.controls.email.errors) {
+        @let e = form.controls.email.errors;
+
+        <small class="error" aria-live="polite">
+          @if (e['required']) {
+            <span>Email obligatoire.</span>
+          }
+          @if (e['email']) {
+            <span>Format d'email invalide.</span>
+          }
+        </small>
+      }
     </div>
 
     <div class="field">
       <label for="password">Mot de passe</label>
-      <input id="password" type="password" formControlName="password"
-             [class.invalid]="form.controls.password.touched && form.controls.password.invalid" />
-      <small class="error" *ngIf="form.controls.password.touched && form.controls.password.errors as e">
-        <span *ngIf="e['required']">Mot de passe obligatoire.</span>
-        <span *ngIf="e['minlength']">Au moins 4 caractères.</span>
-      </small>
+
+      <input id="password"
+             type="password"
+             formControlName="password"
+             [class.invalid]="form.controls.password.touched 
+                              && form.controls.password.invalid" />
+
+      @if (form.controls.password.touched && form.controls.password.errors) {
+        @let e = form.controls.password.errors;
+
+        <small class="error" aria-live="polite">
+          @if (e['required']) {
+            <span>Mot de passe obligatoire.</span>
+          }
+          @if (e['minlength']) {
+            <span>Au moins 4 caractères.</span>
+          }
+        </small>
+      }
     </div>
 
     <button type="submit" [disabled]="form.invalid">Envoyer</button>

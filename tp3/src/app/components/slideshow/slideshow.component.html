@@ -1,13 +1,15 @@
 <div class="slideshow-box" [ngStyle]="boxStyle">
-  <ng-container *ngIf="hasImages$ | async; else empty">
-    <ng-container *ngIf="currentImage$ | async as src; else loading">
-      <img [src]="src" alt="slideshow" />
-    </ng-container>
-  </ng-container>
-  <ng-template #loading>
-    <div class="placeholder">Chargement…</div>
-  </ng-template>
-  <ng-template #empty>
+
+  @if (hasImages$ | async) {
+
+    @if (currentImage$ | async) {
+      <img [src]="(currentImage$ | async)" alt="slideshow" />
+    } @else {
+      <div class="placeholder">Chargement…</div>
+    }
+
+  } @else {
     <div class="placeholder">Aucune image</div>
-  </ng-template>
+  }
+
 </div>

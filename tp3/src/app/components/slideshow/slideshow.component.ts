@@ -1,12 +1,12 @@
 import { Component, Input, signal } from '@angular/core';
-import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
+import { AsyncPipe, NgStyle } from '@angular/common';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { Observable, combineLatest, map, switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-slideshow',
   standalone: true,
-  imports: [AsyncPipe, NgIf, NgStyle],
+  imports: [AsyncPipe, NgStyle],
   templateUrl: './slideshow.component.html',
   styleUrl: './slideshow.component.css'
 })
